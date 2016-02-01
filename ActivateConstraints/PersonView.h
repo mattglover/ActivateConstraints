@@ -22,6 +22,6 @@ typedef NS_ENUM(NSUInteger, PersonViewModifyType) {
 @property (nonatomic, strong, readonly) UILabel *cityLabel;
 @property (nonatomic, strong, readonly) UILabel *countryLabel;
 
-- (void)modifyView:(PersonViewModifyType)type;
+- (void)modifyView:(PersonViewModifyType)type animated:(BOOL)animated;
 
 @end

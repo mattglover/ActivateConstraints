@@ -70,7 +70,7 @@ static CGFloat const debugAlpha = 0.0;
 
 - (void)configureSubviews {
     
-    self.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.2];
+    self.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
     
     self.nameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     self.ageLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
@@ -93,22 +93,20 @@ static CGFloat const debugAlpha = 0.0;
         [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_ageLabel]-|" options:0 metrics:nil views:views]];
         [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_cityLabel]" options:0 metrics:nil views:views]];
         [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_countryLabel]-|" options:0 metrics:nil views:views]];
-        NSLayoutConstraint *countryTopConstraint = [NSLayoutConstraint constraintWithItem:self.countryLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.cityLabel attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-        NSLayoutConstraint *countryBottomConstraint = [NSLayoutConstraint constraintWithItem:self.countryLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.cityLabel attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-        [NSLayoutConstraint activateConstraints:@[countryTopConstraint, countryBottomConstraint]];
-        
+        [NSLayoutConstraint activateConstraints:@[[NSLayoutConstraint constraintWithItem:self.countryLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.cityLabel attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]]];
+
         self.verticalConstraintsShowAll = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_nameLabel]-[_ageLabel]-[_cityLabel]-|" options:0 metrics:nil views:views];
         self.verticalConstraintsShowNameOnly = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_nameLabel]-|" options:0 metrics:nil views:views];
         self.verticalConstraintsShowNameAndAge = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_nameLabel]-[_ageLabel]-|" options:0 metrics:nil views:views];
         self.verticalConstraintsShowNameAndAddress = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_nameLabel]-[_cityLabel]-|" options:0 metrics:nil views:views];
         
-        [self modifyView:PersonViewModifyTypeShowAll];
+        [self modifyView:PersonViewModifyTypeShowAll animated:NO];
         
         self.contraintsSetup = YES;
     }
 }
 
-- (void)modifyView:(PersonViewModifyType)type {
+- (void)modifyView:(PersonViewModifyType)type animated:(BOOL)animated {
 
     switch (type) {
         case PersonViewModifyTypeNameAndAge:
@@ -147,7 +145,8 @@ static CGFloat const debugAlpha = 0.0;
             break;
     }
     
-    [UIView animateWithDuration:0.4
+    NSTimeInterval timeInterval = animated ? 0.4 : 0.0;
+    [UIView animateWithDuration:timeInterval
                      animations:^{
                          [self layoutIfNeeded];
                      } completion:^(BOOL finished) {

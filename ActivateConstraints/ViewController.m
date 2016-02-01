@@ -26,20 +26,7 @@
     [self setupModifyButton];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-
-    self.title = @"Activate Constraint";
-    self.personView.nameLabel.text = @"Mickey Mouse";
-    self.personView.ageLabel.text = @"150";
-    self.personView.cityLabel.text = @"Dallas, TX";
-    self.personView.countryLabel.text = @"United States of America";
-}
-
 - (void)setupConstraints {
-    
     NSDictionary *views = NSDictionaryOfVariableBindings(_personView);
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_personView]-|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-40-[_personView]" options:0 metrics:nil views:views]];
@@ -50,9 +37,22 @@
     [self.navigationItem setRightBarButtonItem:modifyButton];
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.title = @"Activate Constraint";
+    self.personView.nameLabel.text = @"Mickey Mouse";
+    self.personView.ageLabel.text = @"150";
+    self.personView.cityLabel.text = @"Dallas, TX";
+    self.personView.countryLabel.text = @"United States of America";
+}
+
+#pragma mark - UIBarButton
 - (void)modifyTapped:(UIBarButtonItem *)sender {
     PersonViewModifyType type = arc4random_uniform(4);
-    [self.personView modifyView:type];
+    [self.personView modifyView:type animated:YES];
 }
 
 @end
