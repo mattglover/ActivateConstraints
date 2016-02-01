@@ -28,10 +28,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.title = @"Active Constraint";
-    self.view.backgroundColor = [UIColor redColor];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+
+    self.title = @"Activate Constraint";
     self.personView.nameLabel.text = @"Mickey Mouse";
     self.personView.ageLabel.text = @"150";
     self.personView.cityLabel.text = @"Dallas, TX";
@@ -52,7 +52,6 @@
 
 - (void)modifyTapped:(UIBarButtonItem *)sender {
     PersonViewModifyType type = arc4random_uniform(4);
-    
     [self.personView modifyView:type];
 }
 

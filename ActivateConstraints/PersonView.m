@@ -70,7 +70,7 @@ static CGFloat const debugAlpha = 0.0;
 
 - (void)configureSubviews {
     
-    self.backgroundColor = [UIColor grayColor];
+    self.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.2];
     
     self.nameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     self.ageLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
