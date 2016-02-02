@@ -8,7 +8,7 @@
 
 #import "PersonView.h"
 
-static CGFloat const debugAlpha = 0.0;
+static NSTimeInterval const defaultAnimationDuration = 0.4;
 
 @interface PersonView ()
 @property (nonatomic, strong, readwrite) UILabel *nameLabel;
@@ -139,7 +139,7 @@ static CGFloat const debugAlpha = 0.0;
             break;
     }
     
-    NSTimeInterval timeInterval = animated ? 0.4 : 0.0;
+    NSTimeInterval timeInterval = animated ? defaultAnimationDuration : 0.0;
     [UIView animateWithDuration:timeInterval
                      animations:^{
                          [self layoutIfNeeded];
