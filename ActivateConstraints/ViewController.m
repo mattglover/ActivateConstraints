@@ -11,6 +11,7 @@
 
 @interface ViewController ()
 @property (nonatomic, strong) PersonView *personView;
+@property (nonatomic, assign) PersonViewModifyType currentModifyType;
 @end
 
 @implementation ViewController
@@ -52,6 +53,11 @@
 #pragma mark - UIBarButton
 - (void)modifyTapped:(UIBarButtonItem *)sender {
     PersonViewModifyType type = arc4random_uniform(4);
+    while (self.currentModifyType == type) {
+        type = arc4random_uniform(4);
+    }
+    
+    self.currentModifyType = type;
     [self.personView modifyView:type animated:YES];
 }
 
