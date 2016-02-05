@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B249CE421C63F319006B3DD3 /* CompanyView.m in Sources */ = {isa = PBXBuildFile; fileRef = B249CE411C63F319006B3DD3 /* CompanyView.m */; };
 		B2F6881E1C5FA64B005E60B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6881D1C5FA64B005E60B0 /* main.m */; };
 		B2F688211C5FA64B005E60B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F688201C5FA64B005E60B0 /* AppDelegate.m */; };
 		B2F688241C5FA64B005E60B0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F688231C5FA64B005E60B0 /* ViewController.m */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B249CE401C63F319006B3DD3 /* CompanyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyView.h; sourceTree = "<group>"; };
+		B249CE411C63F319006B3DD3 /* CompanyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyView.m; sourceTree = "<group>"; };
 		B2F688191C5FA64B005E60B0 /* ActivateConstraints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivateConstraints.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F6881D1C5FA64B005E60B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B2F6881F1C5FA64B005E60B0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 			children = (
 				B2F688531C5FA7C0005E60B0 /* PersonView.h */,
 				B2F688541C5FA7C0005E60B0 /* PersonView.m */,
+				B249CE401C63F319006B3DD3 /* CompanyView.h */,
+				B249CE411C63F319006B3DD3 /* CompanyView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 			files = (
 				B2F688241C5FA64B005E60B0 /* ViewController.m in Sources */,
 				B2F688551C5FA7C0005E60B0 /* PersonView.m in Sources */,
+				B249CE421C63F319006B3DD3 /* CompanyView.m in Sources */,
 				B2F688211C5FA64B005E60B0 /* AppDelegate.m in Sources */,
 				B2F6881E1C5FA64B005E60B0 /* main.m in Sources */,
 			);
@@ -516,6 +522,7 @@
 				B2F688481C5FA64B005E60B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B2F688491C5FA64B005E60B0 /* Build configuration list for PBXNativeTarget "ActivateConstraintsTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +531,7 @@
 				B2F6884B1C5FA64B005E60B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B2F6884C1C5FA64B005E60B0 /* Build configuration list for PBXNativeTarget "ActivateConstraintsUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +540,7 @@
 				B2F6884E1C5FA64B005E60B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

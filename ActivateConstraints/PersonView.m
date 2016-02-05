@@ -8,8 +8,6 @@
 
 #import "PersonView.h"
 
-static NSTimeInterval const defaultAnimationDuration = 0.4;
-
 @interface PersonView ()
 @property (nonatomic, strong, readwrite) UILabel *nameLabel;
 @property (nonatomic, strong, readwrite) UILabel *ageLabel;
@@ -104,7 +102,9 @@ static NSTimeInterval const defaultAnimationDuration = 0.4;
 
     switch (type) {
         case PersonViewModifyTypeNameAndAge:
-            self.cityLabel.hidden = YES;
+			self.nameLabel.hidden = NO;
+			self.ageLabel.hidden = NO;
+			self.cityLabel.hidden = YES;
             self.countryLabel.hidden = YES;
             [NSLayoutConstraint deactivateConstraints:self.verticalConstraintsShowAll];
             [NSLayoutConstraint deactivateConstraints:self.verticalConstraintsShowNameOnly];
@@ -113,7 +113,10 @@ static NSTimeInterval const defaultAnimationDuration = 0.4;
             break;
             
         case PersonViewModifyTypeNameAndAddress:
+			self.nameLabel.hidden = NO;
             self.ageLabel.hidden = YES;
+			self.cityLabel.hidden = NO;
+			self.countryLabel.hidden = NO;
             [NSLayoutConstraint deactivateConstraints:self.verticalConstraintsShowAll];
             [NSLayoutConstraint deactivateConstraints:self.verticalConstraintsShowNameOnly];
             [NSLayoutConstraint deactivateConstraints:self.verticalConstraintsShowNameAndAge];
@@ -121,9 +124,10 @@ static NSTimeInterval const defaultAnimationDuration = 0.4;
             break;
             
         case PersonViewModifyTypeNameOnly:
+			self.nameLabel.hidden = NO;
+			self.ageLabel.hidden = YES;
             self.cityLabel.hidden = YES;
             self.countryLabel.hidden = YES;
-            self.ageLabel.hidden = YES;
             [NSLayoutConstraint deactivateConstraints:self.verticalConstraintsShowAll];
             [NSLayoutConstraint deactivateConstraints:self.verticalConstraintsShowNameAndAge];
             [NSLayoutConstraint deactivateConstraints:self.verticalConstraintsShowNameAndAddress];
@@ -132,45 +136,14 @@ static NSTimeInterval const defaultAnimationDuration = 0.4;
             
         default:
         case PersonViewModifyTypeShowAll:
+			self.cityLabel.hidden = NO;
+			self.countryLabel.hidden = NO;
+			self.nameLabel.hidden = NO;
+			self.ageLabel.hidden = NO;
             [NSLayoutConstraint deactivateConstraints:self.verticalConstraintsShowNameOnly];
             [NSLayoutConstraint deactivateConstraints:self.verticalConstraintsShowNameAndAge];
             [NSLayoutConstraint deactivateConstraints:self.verticalConstraintsShowNameAndAddress];
             [NSLayoutConstraint activateConstraints:self.verticalConstraintsShowAll];
-            break;
-    }
-    
-    NSTimeInterval timeInterval = animated ? defaultAnimationDuration : 0.0;
-    [UIView animateWithDuration:timeInterval
-                     animations:^{
-                         [self layoutIfNeeded];
-                     } completion:^(BOOL finished) {
-                         [self showSubviewsForType:type];
-                     }];
-}
-
-- (void)showSubviewsForType:(PersonViewModifyType)type {
-    switch (type) {
-        case PersonViewModifyTypeNameAndAge:
-            self.nameLabel.hidden = NO;
-            self.ageLabel.hidden = NO;
-            break;
-            
-        case PersonViewModifyTypeNameAndAddress:
-            self.cityLabel.hidden = NO;
-            self.countryLabel.hidden = NO;
-            self.nameLabel.hidden = NO;
-            break;
-            
-        case PersonViewModifyTypeNameOnly:
-            self.nameLabel.hidden = NO;
-            break;
-            
-        default:
-        case PersonViewModifyTypeShowAll:
-            self.cityLabel.hidden = NO;
-            self.countryLabel.hidden = NO;
-            self.nameLabel.hidden = NO;
-            self.ageLabel.hidden = NO;
             break;
     }
 }
