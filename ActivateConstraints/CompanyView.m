@@ -98,13 +98,13 @@
 		[NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_countryLabel]-|" options:0 metrics:nil views:views]];
 		[NSLayoutConstraint activateConstraints:@[[NSLayoutConstraint constraintWithItem:self.countryLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.cityLabel attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]]];
 
-		self.nameLabelToTopConstraints 					= [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_nameLabel]" options:0 metrics:nil views:views];
+		self.nameLabelToTopConstraints 					= [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(8@250)-[_nameLabel]" options:0 metrics:nil views:views];
 
-		self.industryLabelToTopConstraints 			 	= [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_industryLabel]" options:0 metrics:nil views:views];
-		self.industryLabelTopToNameBottomConstraints 	= [NSLayoutConstraint constraintsWithVisualFormat:@"V:[_nameLabel]-[_industryLabel]" options:0 metrics:nil views:views];
+		self.industryLabelToTopConstraints 			 	= [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(8@249)-[_industryLabel]" options:0 metrics:nil views:views];
+		self.industryLabelTopToNameBottomConstraints 	= [NSLayoutConstraint constraintsWithVisualFormat:@"V:[_nameLabel]-(8@250)-[_industryLabel]" options:0 metrics:nil views:views];
 
-		self.addressLabelToTopConstraints 			 	= [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_cityLabel]" options:0 metrics:nil views:views];
-		self.addressLabelTopToNameBottomConstraints  	= [NSLayoutConstraint constraintsWithVisualFormat:@"V:[_nameLabel]-[_cityLabel]" options:0 metrics:nil views:views];
+		self.addressLabelToTopConstraints 			 	= [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(8@248)-[_cityLabel]" options:0 metrics:nil views:views];
+		self.addressLabelTopToNameBottomConstraints  	= [NSLayoutConstraint constraintsWithVisualFormat:@"V:[_nameLabel]-(8@249)-[_cityLabel]" options:0 metrics:nil views:views];
 		self.addressLabelTopToIndustryBottomConstraints	= [NSLayoutConstraint constraintsWithVisualFormat:@"V:[_industryLabel]-[_cityLabel]" options:0 metrics:nil views:views];
 
 		[self updateViewWithOptions:CompanyViewShowName | CompanyViewShowIndustry | CompanyViewShowAddress];
@@ -121,7 +121,6 @@
 		NSLog(@"****  SHOW NONE  ***");
 		NSLog(@"********************");
 		NSLog(@"********************");
-		return;
 	}
 
 	NSLog(@"********************");
@@ -184,6 +183,7 @@
 	} else {
 		// activate industry to top constraint
 		[NSLayoutConstraint activateConstraints:self.industryLabelToTopConstraints];
+		[NSLayoutConstraint deactivateConstraints:self.nameLabelToTopConstraints];
 	}
 }
 
@@ -224,7 +224,7 @@
 	} else if (self.nameLabel.hidden == NO) {
 		self.currentBottomConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[_nameLabel]-|" options:0 metrics:nil views:views];
 	} else {
-		self.currentBottomConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:||" options:0 metrics:nil views:views];
+		// Not sure what to do about bottom constraint when None is selected (????)
 	}
 
 	[NSLayoutConstraint activateConstraints:self.currentBottomConstraints];
