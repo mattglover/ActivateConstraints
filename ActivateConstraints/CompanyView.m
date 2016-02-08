@@ -18,18 +18,15 @@
 @property (nonatomic, strong, readwrite) UILabel *cityLabel;
 @property (nonatomic, strong, readwrite) UILabel *countryLabel;
 
-@property (nonatomic, strong) NSArray *nameLabelToTopConstraints;
+@property (nonatomic, assign, getter=isContraintsSetup) BOOL contraintsSetup;
 
+@property (nonatomic, strong) NSArray *nameLabelToTopConstraints;
 @property (nonatomic, strong) NSArray *industryLabelToTopConstraints;
 @property (nonatomic, strong) NSArray *industryLabelTopToNameBottomConstraints;
-
 @property (nonatomic, strong) NSArray *addressLabelToTopConstraints;
 @property (nonatomic, strong) NSArray *addressLabelTopToNameBottomConstraints;
 @property (nonatomic, strong) NSArray *addressLabelTopToIndustryBottomConstraints;
-
 @property (nonatomic, strong) NSArray *currentBottomConstraints;
-
-@property (nonatomic, assign, getter=isContraintsSetup) BOOL contraintsSetup;
 
 @end
 
@@ -75,10 +72,10 @@
 
 	self.backgroundColor = [UIColor colorWithWhite:0.93 alpha:1.0];
 
-	self.nameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+	self.nameLabel.font 	= [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
 	self.industryLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-	self.cityLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
-	self.countryLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+	self.cityLabel.font 	= [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+	self.countryLabel.font 	= [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
 }
 
 - (void)updateConstraints {
